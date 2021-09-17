@@ -1,8 +1,10 @@
 import { createStore } from "vuex";
+import tracker from "./modules/tracker";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+const store = new createStore({
+  modules: {
+    tracker,
+  },
 });
+
+export default store;
