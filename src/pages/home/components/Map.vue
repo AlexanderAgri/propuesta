@@ -1,5 +1,5 @@
 <template>
-  <l-map :zoom="15" :center="coordenadas()" style="height: 68vh">
+  <l-map :zoom="12" :center="coordenadas()" style="height: 68vh">
     <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
     <l-marker :lat-lng="coordenadas()">
       <l-popup>Your IP is here</l-popup>

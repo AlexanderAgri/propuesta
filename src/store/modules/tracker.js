@@ -1,3 +1,5 @@
+import { getIpifyApi } from "@/helpers/getIpifyApi";
+
 export default {
   state: {
     ip: false,
@@ -18,17 +20,15 @@ export default {
   actions: {
     async searchIpAddress({ commit }, ip) {
       commit("loader", true);
-      try {
-        const res = await fetch(
-            `https://geo.ipify.org/api/v1?apiKey=at_F0f1DDEf5kAek0RygqZpsZF17sPxo&domain=${ip}`
-          ),
-          json = await res.json();
-        commit("search", json);
+
+      const response = await getIpifyApi(ip);
+
+      if (!response.status) {
+        commit("search", response);
         commit("error", false);
         commit("loader", false);
-        if (!res.ok) throw { status: res.status, statusText: res.statusText };
-      } catch (err) {
-        commit("error", err);
+      } else {
+        commit("error", response);
         commit("loader", false);
       }
     },
