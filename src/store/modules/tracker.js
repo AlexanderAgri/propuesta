@@ -1,6 +1,8 @@
 import { getIpifyApi } from "@/helpers/getIpifyApi";
 
 export default {
+  namespaced: true,
+
   state: {
     ip: false,
     loader: false,
